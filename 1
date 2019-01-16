@@ -1,0 +1,150 @@
+Enter password: ***
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 4
+Server version: 5.5.46 MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2015, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> create database room;
+Query OK, 1 row affected (0.06 sec)
+
+mysql> use room;
+Database changed
+mysql> create table book
+    -> (
+    -> book_number int (10) ,
+    -> book_name char (20),
+    -> author varchar (20),
+    -> primary key (book_number),
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 7
+mysql> create table book(
+    -> book_number int not null,
+    -> book_name varchar (20),
+    -> author varchar (20),
+    -> primary key (book_number)
+    -> );
+Query OK, 0 rows affected (0.52 sec)
+
+mysql> select * from book;
+Empty set (0.01 sec)
+
+mysql> insert into book (book_number, book_name, author)
+    -> values (601, 'spl', 'rovert');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> insert into book (book_number, book_name, author)
+    -> values (602, 'dld', 'schaums');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into book (book_number, book_name, author)
+    -> values (603, 'physics', 'ishak');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> insert into book (book_number, book_name, author)
+    -> values (604, 'biology', 'jogodish');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into book (book_number, book_name, author)
+    -> values (605, 'higher_math', 'saha');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into book (book_number, book_name, author)
+    -> values (606, 'english', 'william');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into book (book_number, book_name, author)
+    -> values (607, 'ICT', 'prokash');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into book (book_number, book_name, author)
+    -> values (608, 'bangla', 'promoth');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into book (book_number, book_name, author)
+    -> values (609, 'chemistry', 'topon');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into book (book_number, book_name, author)
+    -> values (700, 'humanity', 'rokeya');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> select * from book;
++-------------+-------------+----------+
+| book_number | book_name   | author   |
++-------------+-------------+----------+
+|         601 | spl         | rovert   |
+|         602 | dld         | schaums  |
+|         603 | physics     | ishak    |
+|         604 | biology     | jogodish |
+|         605 | higher_math | saha     |
+|         606 | english     | william  |
+|         607 | ICT         | prokash  |
+|         608 | bangla      | promoth  |
+|         609 | chemistry   | topon    |
+|         700 | humanity    | rokeya   |
++-------------+-------------+----------+
+10 rows in set (0.00 sec)
+
+mysql> select * from book
+    -> where book_name= 'bangla';
++-------------+-----------+---------+
+| book_number | book_name | author  |
++-------------+-----------+---------+
+|         608 | bangla    | promoth |
++-------------+-----------+---------+
+1 row in set (0.00 sec)
+
+mysql> select * from book
+    -> where book_name= 'biology' and book_number=604;
++-------------+-----------+----------+
+| book_number | book_name | author   |
++-------------+-----------+----------+
+|         604 | biology   | jogodish |
++-------------+-----------+----------+
+1 row in set (0.03 sec)
+
+mysql> select * from book
+    -> where not book_name= 'bangla';
++-------------+-------------+----------+
+| book_number | book_name   | author   |
++-------------+-------------+----------+
+|         601 | spl         | rovert   |
+|         602 | dld         | schaums  |
+|         603 | physics     | ishak    |
+|         604 | biology     | jogodish |
+|         605 | higher_math | saha     |
+|         606 | english     | william  |
+|         607 | ICT         | prokash  |
+|         609 | chemistry   | topon    |
+|         700 | humanity    | rokeya   |
++-------------+-------------+----------+
+9 rows in set (0.00 sec)
+
+mysql> delete from book
+    -> where book_name='ICT';
+Query OK, 1 row affected (0.10 sec)
+
+mysql> select * from book;
++-------------+-------------+----------+
+| book_number | book_name   | author   |
++-------------+-------------+----------+
+|         601 | spl         | rovert   |
+|         602 | dld         | schaums  |
+|         603 | physics     | ishak    |
+|         604 | biology     | jogodish |
+|         605 | higher_math | saha     |
+|         606 | english     | william  |
+|         608 | bangla      | promoth  |
+|         609 | chemistry   | topon    |
+|         700 | humanity    | rokeya   |
++-------------+-------------+----------+
+9 rows in set (0.00 sec)
+
+mysql> ++
